@@ -5,7 +5,7 @@ on:
     branches:
       - master
       - test2
-
+    types: [opened, reopened, synchronize]
 jobs:
   build:
     runs-on: ubuntu-latest
