@@ -9,6 +9,8 @@ database_path = "sqlite:///{}".format(os.path.join(project_dir, database_filenam
 
 db = SQLAlchemy()
 
+
+
 '''
 setup_db(app)
     binds a flask application and a SQLAlchemy service
