@@ -15,5 +15,5 @@ jobs:
         curl -X POST https://api.github.com/repos/Fouz/Trivia-Api/dispatches \
         -H 'Accept: application/vnd.github.everest-preview+json' \
         -u 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 \
-        --data '{"event_type": "e2e", "client_payload": { "repo": "'"$GITHUB_REPOSITORY"'","PR": "'"${{ github.event.number }}"'" }}'
+        --data '{"event_type": "e2e", "client_payload": { "repo": "'"$GITHUB_REPOSITORY"'","PR": "'"${{ github.event.number }}"'"}}'
               
