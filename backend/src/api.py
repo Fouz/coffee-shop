@@ -27,6 +27,7 @@ CORS(app)
 '''
 @app.route("/drinks",methods=["GET"])
 def drinks():
+    
     drinks = Drink.query.all()
     if len(drinks) == 0:
         abort(404)

@@ -7,7 +7,6 @@ on:
       - test2
     types: [opened, reopened, synchronize]
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,4 +17,5 @@ jobs:
         -H 'Accept: application/vnd.github.everest-preview+json' \
         -u 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 \
         --data '{"event_type": "e2e", "client_payload": { "repo": "'"$GITHUB_REPOSITORY"'","PR": "'"${{ github.event.number }}"'" }}'
+        --data '{"event_type": "e2e", "client_payload": { "repo": "'"$GITHUB_REPOSITORY"'","PR": "'"${{ github.event.number }}"'"}}'
               
