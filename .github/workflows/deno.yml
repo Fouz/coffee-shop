@@ -3,7 +3,7 @@ name: Build app & upload to AppCenter
 on:
   pull_request:
     branches:
-      - coffee-shop
+      - master
       - test2
 
 jobs:
