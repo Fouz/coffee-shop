@@ -1,25 +1,19 @@
-name: Remote Dispatch Action Initiator
+name: Build app & upload to AppCenter
 
 on:
-  push:
-  repository_dispatch:
+  pull_request:
+    branches:
+      - coffee-shop
+      - test2
 
 jobs:
-  ping-pong:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: PING - Dispatch initiating repository event
-        if: github.event.action != 'pong'
-        run: |
-          curl -X POST https://api.github.com/repos/Fouz/Trivia-Api/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u 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 \
-          --data '{"event_type": "ping", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
-      - name: ACK - Acknowledge pong from remote repository
-        if: github.event.action == 'pong'
-        run: |
-          echo "PONG received from '${{ github.event.client_payload.repository }}'" && \
-          curl -X POST https://api.github.com/repos/Fouz/Trivia-Api/dispatches \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u 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 \
-          --data '{"event_type": "ack", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+    - name: E2E Test
+      run: |
+        curl -X POST https://api.github.com/repos/Fouz/Trivia-Api/dispatches \
+        -H 'Accept: application/vnd.github.everest-preview+json' \
+        -u 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 \
+        --data '{"event_type": "e2e", "client_payload": { "repo": "'"$GITHUB_REPOSITORY"'","PR": "'"${{ github.event.number }}"'", }}'
+              
