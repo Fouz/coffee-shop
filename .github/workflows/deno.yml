@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - master
+      - test1
       - test2
     types: [opened, reopened, synchronize]
 jobs:
@@ -12,8 +13,5 @@ jobs:
     steps:
     - name: E2E Test
       run: |
-        curl -X POST https://api.github.com/repos/Fouz/Trivia-Api/dispatches \
-        -H 'Accept: application/vnd.github.everest-preview+json' \
-        -u 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 \
-        --data '{"event_type": "e2e", "client_payload": { "repo": "'"$GITHUB_REPOSITORY"'","PR": "'"${{ github.event.number }}"'"}}'
-              
+      export RELEASE_NUMBER=123
+      curl -X POST https://api.github.com/repos/Fouz/Trivia-Api/dispatches -H 'Accept: application/vnd.github.everest-preview+json' -u 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 --data '{"event_type": "e2e", "client_payload": { "REPO": ${GITHUB_REPOSITORY}, "PR": ${{ github.event.number }}, "releaseNumber": ${RELEASE_NUMBER}  }}'
