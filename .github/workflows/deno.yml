@@ -31,8 +31,8 @@ jobs:
 
     - name: print result 
       run: |
-        DATE=$(date '+%Y-%m-%d %H:%M:%S');
-        ls;
+        # DATE=$(date '+%Y-%m-%d %H:%M:%S')
+        ls
         # ls reports/
         # cp reports/*.html "$DATE.html";
         # AWS_ACCESS_KEY_ID=AKIAUS5HDPOLLL5BTCHB AWS_SECRET_ACCESS_KEY=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 aws cp $DATE.html s3://locust-reports-mrsool
