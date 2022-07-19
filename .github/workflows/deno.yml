@@ -1,6 +1,9 @@
 name: Build app & upload to AppCenter
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
     branches:
       - master
