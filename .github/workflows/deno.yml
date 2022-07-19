@@ -32,6 +32,7 @@ jobs:
     - name: print result 
       run: |
         DATE=$(date '+%Y-%m-%d %H:%M:%S')
-        echo $DATE
-        AWS_ACCESS_KEY_ID=AKIAUS5HDPOLLL5BTCHB AWS_SECRET_ACCESS_KEY=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 aws cp reports/automation1.html s3://locust-reports-mrsool
+        # echo $DATE
+        mv reports/*.html $DATE.html 
+        AWS_ACCESS_KEY_ID=AKIAUS5HDPOLLL5BTCHB AWS_SECRET_ACCESS_KEY=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 aws cp $DATE.html s3://locust-reports-mrsool
         if [[ ${{steps.test-app.outcome}}  == "success" ]]; then exit 0; else exit 1; fi
