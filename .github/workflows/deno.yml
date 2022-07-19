@@ -35,6 +35,6 @@ jobs:
         DATE=$(date '+%Y-%m-%d %H:%M:%S')
         # mv reports/*.html reports/"$DATE.html"
         mv *.html "$DATE.html"
-        AWS_ACCESS_KEY_ID=AKIAUS5HDPOLLL5BTCHB AWS_SECRET_ACCESS_KEY=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 aws sync reports/ s3://locust-reports-mrsool
+        AWS_ACCESS_KEY_ID=AKIAUS5HDPOLLL5BTCHB AWS_SECRET_ACCESS_KEY=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 aws s3 cp "$DATE.html" s3://locust-reports-mrsool
         echo "report available on ${https://locust.mrsool.xyz/"$DATE.html}"
         if [[ ${{steps.test-app.outcome}}  == "success" ]]; then exit 0; else exit 1; fi
